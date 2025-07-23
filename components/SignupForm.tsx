@@ -18,12 +18,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { standardSchemaResolver } from "@hookform/resolvers/standard-schema";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const formSchema = z.object({
-  email: z.string().email(),
+  email: z.email(),
 });
 
 export default function SignUpForm({
@@ -33,7 +33,7 @@ export default function SignUpForm({
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+    resolver: standardSchemaResolver(formSchema),
     defaultValues: {
       email: "",
     },
