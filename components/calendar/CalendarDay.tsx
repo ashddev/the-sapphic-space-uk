@@ -5,6 +5,8 @@ import Link from "next/link";
 interface CalendarDayProps {
   key: string;
   day: number;
+  // TODO: show current date
+  currentDate: Date;
   event?: OutSavvyEvent;
 }
 

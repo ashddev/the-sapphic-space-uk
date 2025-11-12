@@ -37,7 +37,9 @@ const Calendar = ({ events }: CalendarProps) => {
       <div className="flex items-center justify-between w-3xl">
         <ChangeMonthButton
           direction="past"
-          currentMonth={selectedMonth}
+          currentDate={currentDate}
+          selectedMonth={selectedMonth}
+          selectedYear={selectedYear}
           monthSetter={setSelectedMonth}
           yearSetter={setSelectedYear}
         />
@@ -47,7 +49,9 @@ const Calendar = ({ events }: CalendarProps) => {
         </div>
         <ChangeMonthButton
           direction="future"
-          currentMonth={selectedMonth}
+          currentDate={currentDate}
+          selectedMonth={selectedMonth}
+          selectedYear={selectedYear}
           monthSetter={setSelectedMonth}
           yearSetter={setSelectedYear}
         />
@@ -63,6 +67,7 @@ const Calendar = ({ events }: CalendarProps) => {
             <CalendarDay
               key={`${dayIndex}-${weekIndex}-${selectedMonth}-${selectedYear}`}
               day={day}
+              currentDate={currentDate}
               event={
                 events.filter((event) =>
                   isEventOnThisDate(
